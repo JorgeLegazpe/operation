@@ -4,79 +4,89 @@ function Organo(game, name, y, src) {
     (this.y = y),
     (this.src = src),
     (this.x = 200),
-    ((this.WIDTH = 30), (this.HEIGHT = 30));
-  //this.addListener();
+    (this.WIDTH = 30),
+    (this.HEIGHT = 30);
 }
 
 Organo.prototype.draw = function() {
-  console.log(this.src);
+  // console.log(this.src);
   var image = new Image();
   image.onload = function() {
-    console.log(this.game);
+    // console.log(this.game);
     this.game.ctx.drawImage(image, this.x, this.y, this.WIDTH, this.HEIGHT);
   }.bind(this);
   image.src = this.src;
 };
 
 Organo.prototype.addListener = function() {
-  // handle mousedown events
+  canvas.onmousedown = myDown;
+  canvas.onmouseup = myUp;
+  canvas.onmousemove = myMove;
+  var dragok = false;
+  var BB = canvas.getBoundingClientRect();
+  var offsetX = BB.left;
+  var offsetY = BB.top;
+  var startX;
+  var startY;
+
+  // manejar eventos cuando clicamos el ratón
   function myDown(e) {
-    // tell the browser we're handling this mouse event
+    // Le indicamos al navegador que estamos manejando eventos del ratón
     e.preventDefault();
     e.stopPropagation();
 
-    // get the current mouse position
+    // Obtenemos la posición actual del ratón
     var mx = parseInt(e.clientX - offsetX);
     var my = parseInt(e.clientY - offsetY);
 
-    // test each rect to see if mouse is inside
+    // Probamos cada objeto para ver si el ratón está dentro
     dragok = false;
     for (var i = 0; i < data.length; i++) {
       var r = data[i];
-      if (mx > r.x && mx < r.x + r.width && my > r.y && my < r.y + r.height) {
-        // if yes, set that rects isDragging=true
+      if (mx > r.x && mx < r.x + r.WIDTH && my > r.y && my < r.y + r.HEIGHT) {
+        // Si es así, se establece dragok y isDragging en true
         dragok = true;
         r.isDragging = true;
       }
     }
-    // save the current mouse position
+    // Guardamos la posición actual
     startX = mx;
     startY = my;
   }
 
-  // handle mouseup events
+  // manejar eventos cuando soltamos el botón del ratón
   function myUp(e) {
-    // tell the browser we're handling this mouse event
+    // Indicamos al navegador que manejamos eventos del ratón
     e.preventDefault();
     e.stopPropagation();
 
-    // clear all the dragging flags
+    // Falseamos las variable dragok y isDragging
     dragok = false;
     for (var i = 0; i < data.length; i++) {
       data[i].isDragging = false;
     }
   }
 
-  // handle mouse moves
+  // manejar eventos cuando movemos el ratón
   function myMove(e) {
-    // if we're dragging anything...
+    // Si estamos arrastrando algo...
     if (dragok) {
-      // tell the browser we're handling this mouse event
+      // Indicamos al navegador que manejamos eventos del ratón
       e.preventDefault();
       e.stopPropagation();
 
-      // get the current mouse position
+      // Obtenemos la posición actual del ratón
       var mx = parseInt(e.clientX - offsetX);
       var my = parseInt(e.clientY - offsetY);
 
-      // calculate the distance the mouse has moved
-      // since the last mousemove
+      // Calculamos la distancia que ha recorrido el ratón
+      // desde el último movimiento
       var dx = mx - startX;
       var dy = my - startY;
 
-      // move each rect that isDragging
-      // by the distance the mouse has moved
-      // since the last mousemove
+      // Movemos cada objeto que tenga isDragging en true
+      // la distancia que el ratón se ha movido
+      // desde el último movimiento
       for (var i = 0; i < data.length; i++) {
         var r = data[i];
         if (r.isDragging) {
@@ -85,10 +95,10 @@ Organo.prototype.addListener = function() {
         }
       }
 
-      // redraw the scene with the new rect positions
-      draw();
+      // Redibujamos la nueva posición del objeto
+      organo.draw();
 
-      // reset the starting mouse position for the next mousemove
+      // REstablecemos la posición del ratón para el nuevo movimiento
       startX = mx;
       startY = my;
     }
