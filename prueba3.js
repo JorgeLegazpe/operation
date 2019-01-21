@@ -7,49 +7,11 @@ window.onload = function() {
   var offsetY = BB.top;
   var WIDTH = canvas.width;
   var HEIGHT = canvas.height;
-  var background = new Image();
 
   // drag related variables
   var dragok = false;
   var startX;
   var startY;
-
-  // an array of objects that define different rectangles
-  var rects = [];
-  rects.push({
-    x: 250 - 15,
-    y: 350 - 15,
-    width: 30,
-    height: 30,
-    fill: "#444444",
-    image: "images/brain.png",
-    isDragging: false
-  });
-  rects.push({
-    x: 250 - 15,
-    y: 400 - 15,
-    width: 30,
-    height: 30,
-    fill: "#ff550d",
-    image: "images/heart.png",
-    isDragging: false
-  });
-  // rects.push({
-  //   x: 250 - 15,
-  //   y: 450 - 15,
-  //   width: 30,
-  //   height: 30,
-  //   fill: "#800080",
-  //   isDragging: false
-  // });
-  // rects.push({
-  //   x: 250 - 15,
-  //   y: 500 - 15,
-  //   width: 30,
-  //   height: 30,
-  //   fill: "#0c64e8",
-  //   isDragging: false
-  // });
 
   // listen for mouse events
   canvas.onmousedown = myDown;
@@ -75,18 +37,19 @@ window.onload = function() {
   // redraw the scene
   function draw() {
     clear();
+    var background = new Image();
     background.src = "images/escenario.png";
-    ctx.drawImage(background, 0, 0, 1200, 600);
+    ctx.drawImage(background, 0, 0, WIDTH, HEIGHT);
     // redraw each rect in the rects[] array
     //ctx.fillRect(0, 0, 120, 120);
     // redraw each rect in the rects[] array
-    // for (var i = 0; i < rects.length; i++) {
-    //   var r = rects[i];
-    //   var img = new Image();
-    //   img.scr = r.image;
-    //   //ctx.fillStyle = r.fill;
-    //   ctx.drawImage(img, r.x, r.y, r.width, r.height);
-    // }
+    for (var i = 0; i < rects.length; i++) {
+      var r = rects[i];
+      var img = new Image();
+      img.scr = r.image;
+      //ctx.fillStyle = r.fill;
+      ctx.drawImage(img, r.x, r.y, r.width, r.height);
+    }
   }
 
   // handle mousedown events

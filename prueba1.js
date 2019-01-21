@@ -1,25 +1,25 @@
-function Organo(game, name, y, src) {
-  (this.game = game),
-    (this.name = name),
-    (this.y = y),
-    (this.src = src),
-    (this.x = 200),
-    ((this.WIDTH = 30), (this.HEIGHT = 30));
-  //this.addListener();
-}
+window.onload = function() {
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  var BB = canvas.getBoundingClientRect();
+  var offsetX = BB.left;
+  var offsetY = BB.top;
+  var WIDTH = canvas.width;
+  var HEIGHT = canvas.height;
+  var dragok = false;
+  var startX;
+  var startY;
 
-Organo.prototype.draw = function() {
-  console.log(this.src);
-  var image = new Image();
-  image.onload = function() {
-    console.log(this.game);
-    this.game.ctx.drawImage(image, this.x, this.y, this.WIDTH, this.HEIGHT);
-  }.bind(this);
-  image.src = this.src;
-};
+  canvas.onmousedown = myDown;
+  canvas.onmouseup = myUp;
+  canvas.onmousemove = myMove;
 
-Organo.prototype.addListener = function() {
-  // handle mousedown events
+  var background = new Image();
+  background.src = "images/escenario.png";
+  ctx.drawImage(background, 0, 0, WIDTH, HEIGHT);
+
+  Game.start();
+
   function myDown(e) {
     // tell the browser we're handling this mouse event
     e.preventDefault();
@@ -31,8 +31,8 @@ Organo.prototype.addListener = function() {
 
     // test each rect to see if mouse is inside
     dragok = false;
-    for (var i = 0; i < data.length; i++) {
-      var r = data[i];
+    for (var i = 0; i < rects.length; i++) {
+      var r = rects[i];
       if (mx > r.x && mx < r.x + r.width && my > r.y && my < r.y + r.height) {
         // if yes, set that rects isDragging=true
         dragok = true;
@@ -52,8 +52,8 @@ Organo.prototype.addListener = function() {
 
     // clear all the dragging flags
     dragok = false;
-    for (var i = 0; i < data.length; i++) {
-      data[i].isDragging = false;
+    for (var i = 0; i < organos.length; i++) {
+      organos[i].isDragging = false;
     }
   }
 
@@ -77,8 +77,8 @@ Organo.prototype.addListener = function() {
       // move each rect that isDragging
       // by the distance the mouse has moved
       // since the last mousemove
-      for (var i = 0; i < data.length; i++) {
-        var r = data[i];
+      for (var i = 0; i < organos.length; i++) {
+        var r = organos[i];
         if (r.isDragging) {
           r.x += dx;
           r.y += dy;
