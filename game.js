@@ -144,8 +144,8 @@ var Game = {
       }
 
       // Redibujamos la nueva posición del objeto
-      console.log(this);
-      this.clear();
+      //this.clear();
+      this.myBackground.draw();
       this.organosArray.forEach(function(organo) {
         organo.draw();
       });
