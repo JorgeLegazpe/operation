@@ -8,8 +8,8 @@ var Game = {
     this.ctx = this.canvas.getContext("2d");
 
     this.inilicializar();
-    this.draw();
-    //this.background();
+    this.drawAll();
+
     //this.addListener();
   },
   inilicializar: function() {
@@ -17,26 +17,22 @@ var Game = {
 
     data.forEach(
       function(organo) {
-        // console.log(organo);
         this.organosArray.push(
           new Organo(this, organo.name, organo.y, organo.src)
         );
       }.bind(this)
     );
+    this.myBackground = new Background(this);
   },
-
-  // background: function() {
-  //   background.draw();
-  // },
 
   // addListener: function() {
   //   organo.addListener();
   // },
 
-  draw: function() {
-    // console.log(this.organosArray);
+  drawAll: function() {
     this.organosArray.forEach(function(organo) {
       organo.draw();
     });
+    this.myBackground.draw();
   }
 };

@@ -1,7 +1,7 @@
 function Background(game) {
   (this.game = game),
     (this.image = new Image()),
-    (this.imagen.src = "images/escenario.png"),
+    (this.src = "images/escenario.png"),
     (this.x = 0),
     (this.y = 0),
     (this.WIDTH = 1200),
@@ -9,7 +9,7 @@ function Background(game) {
 }
 
 Background.prototype.draw = function() {
-  image.onload = function() {
+  this.image.onload = function() {
     this.game.ctx.drawImage(
       this.image,
       this.x,
@@ -18,6 +18,6 @@ Background.prototype.draw = function() {
       this.HEIGHT
     );
   }.bind(this);
-  console.log(this.src);
-  image.src = this.src;
+  console.log(this.image.src);
+  this.image.src = this.src;
 };

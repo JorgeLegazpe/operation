@@ -1,3 +1,4 @@
-#canvas {
+canvas {
+  background-image: "images/escenario.png";
   border: 5px solid black;
 }
