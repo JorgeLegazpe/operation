@@ -5,7 +5,7 @@ function Background(game) {
     (this.x = 0),
     (this.y = 0),
     (this.WIDTH = 1200),
-    (this.HEIGHT = 1200);
+    (this.HEIGHT = 600);
 }
 
 Background.prototype.draw = function() {

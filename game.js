@@ -9,8 +9,7 @@ var Game = {
 
     this.inilicializar();
     this.drawAll();
-
-    //this.addListener();
+    this.addListener();
   },
   inilicializar: function() {
     this.organosArray = [];
@@ -23,11 +22,12 @@ var Game = {
       }.bind(this)
     );
     this.myBackground = new Background(this);
+    this.movimient = new Organo(this);
   },
 
-  // addListener: function() {
-  //   organo.addListener();
-  // },
+  addListener: function() {
+    this.movimient.addListener();
+  },
 
   drawAll: function() {
     this.organosArray.forEach(function(organo) {

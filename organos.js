@@ -19,6 +19,7 @@ Organo.prototype.draw = function() {
 };
 
 Organo.prototype.addListener = function() {
+  console.log("entra");
   canvas.onmousedown = myDown;
   canvas.onmouseup = myUp;
   canvas.onmousemove = myMove;
@@ -31,6 +32,7 @@ Organo.prototype.addListener = function() {
 
   // manejar eventos cuando clicamos el ratón
   function myDown(e) {
+    console.log("boton del raton");
     // Le indicamos al navegador que estamos manejando eventos del ratón
     e.preventDefault();
     e.stopPropagation();
@@ -38,6 +40,7 @@ Organo.prototype.addListener = function() {
     // Obtenemos la posición actual del ratón
     var mx = parseInt(e.clientX - offsetX);
     var my = parseInt(e.clientY - offsetY);
+    console.log(mx, my);
 
     // Probamos cada objeto para ver si el ratón está dentro
     dragok = false;
