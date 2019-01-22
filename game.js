@@ -11,10 +11,17 @@ var Game = {
     this.offsetY = this.BB.top;
     this.startX;
     this.startY;
-    this.longitud = data.length;
+    this.currentValueX = 0;
+    this.currentValueY = 0;
+    this.fridge = {
+      x: 800,
+      y: 400,
+      width: 200,
+      height: 200,
+      fillStyle: "#000"
+    };
 
     this.inilicializar();
-    //this.clear();
     this.drawAll();
     this.addListener();
   },
@@ -37,7 +44,6 @@ var Game = {
   },
 
   drawAll: function() {
-    //this.clear();
     this.organosArray.forEach(function(organo) {
       organo.draw();
     });
@@ -87,7 +93,7 @@ var Game = {
 
     this.dragok = false;
 
-    for (var i = 0; i < this.longitud; i++) {
+    for (var i = 0; i < this.organosArray.length; i++) {
       var r = this.organosArray[i];
 
       if (mx > r.x && mx < r.x + r.WIDTH && my > r.y && my < r.y + r.HEIGHT) {
@@ -106,14 +112,19 @@ var Game = {
   myUp: function(e) {
     // Indicamos al navegador que manejamos eventos del ratón
     e.preventDefault();
+
+    this.currentValueX = e.screenX;
+    this.currentValueY = e.screenY;
+    console.log(this.currentValueX, this.currentValueY);
     e.stopPropagation();
+
     // Falseamos las variable dragok y isDragging
     this.dragok = false;
     for (var i = 0; i < this.organosArray.length; i++) {
       this.organosArray[i].isDragging = false;
     }
+    this.check();
   },
-
   // manejar eventos cuando movemos el ratón
 
   myMove: function(e) {
@@ -144,15 +155,28 @@ var Game = {
       }
 
       // Redibujamos la nueva posición del objeto
-      //this.clear();
+
       this.myBackground.draw();
       this.organosArray.forEach(function(organo) {
         organo.draw();
       });
 
-      // REstablecemos la posición del ratón para el nuevo movimiento
+      // Restablecemos la posición del ratón para el nuevo movimiento
       this.startX = mx;
       this.startY = my;
+    }
+  },
+  check: function() {
+    console.log(this.currentValueX + " LLEGA " + this.fridge.x);
+    if (
+      this.currentValueX > this.fridge.x &&
+      this.currentValueX + 30 < this.fridge.x + this.fridge.width &&
+      this.currentValueY > this.fridge.y &&
+      this.currentValueY + 30 < this.fridge.y + this.fridge.height
+    ) {
+      console.log("Está en la nevera");
+    } else {
+      console.log("no está en la nevera");
     }
   }
 };
