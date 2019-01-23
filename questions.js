@@ -12,7 +12,7 @@ var questions = {
     {
       question: "¿Qué deportes olímpicos son buenos para ejercitar el cerebro?",
       correcta: 2,
-      answer: [
+      answers: [
         "Lucha libre y artes marciales",
         "Atletismo y natación",
         "Tiro con arco y pistola"
@@ -21,7 +21,7 @@ var questions = {
     {
       question: "El cerebro humano es capaz de procesar imágenes ",
       correcta: 2,
-      answer: [
+      answers: [
         "En menos de 5 segundos",
         "En menos de un segundo",
         "En menos de 7 segundos"

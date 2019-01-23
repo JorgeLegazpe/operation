@@ -176,16 +176,17 @@ var Game = {
     ) {
       if (questions[this.selection.name]) {
         var numberQuestion = Math.floor(Math.random() * 3);
+
         document.getElementById("question").innerHTML =
           questions[this.selection.name][numberQuestion].question;
-        // document.getElementsByClassName("answer1").innerHTML = question[this.selection.name]
-        // document.getElementsByClassName("answer2").innerHTML =
-        // document.getElementsByClassName("answer3").innerHTML =
-        document.getElementById("tarjeta").style.display = "block";
 
-        console.log(
-          questions[this.selection.name][Math.floor(Math.random() * 3)].question
-        );
+        document.getElementById("labelAns1").innerHTML =
+          questions[this.selection.name][numberQuestion].answers[0];
+        document.getElementById("labelAns2").innerHTML =
+          questions[this.selection.name][numberQuestion].answers[1];
+        document.getElementById("tarjeta").style.display = "block";
+        document.getElementById("labelAns3").innerHTML =
+          questions[this.selection.name][numberQuestion].answers[2];
       }
     }
 
