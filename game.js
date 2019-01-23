@@ -2,8 +2,8 @@ var Game = {
   canvas: undefined,
   ctx: undefined,
 
-  start: function() {
-    this.canvas = document.getElementById("canvas");
+  start: function(id) {
+    this.canvas = document.getElementById(id);
     this.ctx = this.canvas.getContext("2d");
     this.dragok = false;
     this.BB = canvas.getBoundingClientRect();
@@ -13,10 +13,10 @@ var Game = {
     this.startY;
     this.currentValueX = 0;
     this.currentValueY = 0;
-    this.fridge = {
-      x: 800,
-      y: 400,
-      width: 200,
+    this.camilla = {
+      x: 950,
+      y: 420,
+      width: 250,
       height: 200
     };
     this.selection = {};
@@ -44,9 +44,6 @@ var Game = {
   },
 
   drawAll: function() {
-    this.organosArray.forEach(function(organo) {
-      organo.draw();
-    });
     this.myBackground.draw();
   },
 
@@ -104,7 +101,7 @@ var Game = {
       }
     }
     // Guardamos la posición actual
-    console.log(this.selection);
+
     this.startX = mx;
     this.startY = my;
   },
@@ -117,7 +114,7 @@ var Game = {
 
     this.currentValueX = e.screenX;
     this.currentValueY = e.screenY;
-    console.log(this.currentValueX, this.currentValueY);
+
     e.stopPropagation();
 
     // Falseamos las variable dragok y isDragging
@@ -125,9 +122,8 @@ var Game = {
     for (var i = 0; i < this.organosArray.length; i++) {
       this.organosArray[i].isDragging = false;
     }
-    console.log(e);
+
     this.check(this.selection);
-    console.log(this.selection);
   },
   // manejar eventos cuando movemos el ratón
 
@@ -150,8 +146,9 @@ var Game = {
       // Movemos cada objeto que tenga isDragging en true
       // la distancia que el ratón se ha movido
       // desde el último movimiento
+      var r;
       for (var i = 0; i < this.organosArray.length; i++) {
-        var r = this.organosArray[i];
+        r = this.organosArray[i];
         if (r.isDragging) {
           r.x += dx;
           r.y += dy;
@@ -170,16 +167,46 @@ var Game = {
       this.startY = my;
     }
   },
-  check: function(arg) {
-    console.log(this.currentValueX + " LLEGA " + this.fridge.x);
-    console.log(this.selection.name);
+  check: function() {
     if (
-      this.currentValueX > this.fridge.x &&
-      this.currentValueX + 30 < this.fridge.x + this.fridge.width &&
-      this.currentValueY > this.fridge.y &&
-      this.currentValueY + 30 < this.fridge.y + this.fridge.height
+      this.currentValueX > this.camilla.x &&
+      this.currentValueX + 30 < this.camilla.x + this.camilla.width &&
+      this.currentValueY > this.camilla.y &&
+      this.currentValueY + 30 < this.camilla.y + this.camilla.height
     ) {
+      if (questions[this.selection.name]) {
+        var numberQuestion = Math.floor(Math.random() * 3);
+        document.getElementById("question").innerHTML =
+          questions[this.selection.name][numberQuestion].question;
+        // document.getElementsByClassName("answer1").innerHTML = question[this.selection.name]
+        // document.getElementsByClassName("answer2").innerHTML =
+        // document.getElementsByClassName("answer3").innerHTML =
+        document.getElementById("tarjeta").style.display = "block";
+
+        console.log(
+          questions[this.selection.name][Math.floor(Math.random() * 3)].question
+        );
+      }
+    }
+
+    if (this.selection.name == question.name) {
+      var pregunta = brain[Math.floor(Math.random() * brain.length)];
+      console.log(pregunta);
+
+      console.log(question.name);
+      // if(selection.name === question.name){
+
+      // }
+
+      // var pregunta =
+      //   question[0][
+      //     Math.floor(Math.random() * question[selection.name].length)
+      //   ];
+      // console.log(question.length);
+      // console.log(Math.floor(Math.random() * 4));
+
       console.log("Está en la nevera " + this.selection.name);
+      //console.log(questionBrain);
     } else {
       console.log("no está en la nevera");
     }

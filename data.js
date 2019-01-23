@@ -1,8 +1,8 @@
 var data = [
   {
     name: "brain",
-    x: 300 - 15,
-    y: 320 - 15,
+    x: 100 - 15,
+    y: 330 - 15,
     width: 30,
     height: 30,
     src: "images/brain.png",
@@ -10,8 +10,8 @@ var data = [
   },
   {
     name: "heart",
-    x: 270 - 15,
-    y: 360 - 15,
+    x: 90 - 15,
+    y: 370 - 15,
     width: 30,
     height: 30,
     src: "images/heart.png",
@@ -19,8 +19,8 @@ var data = [
   },
   {
     name: "lungs",
-    x: 240 - 15,
-    y: 355 - 15,
+    x: 120 - 15,
+    y: 360 - 15,
     width: 30,
     height: 30,
     src: "images/lungs.png",
@@ -28,8 +28,8 @@ var data = [
   },
   {
     name: "liver",
-    x: 220 - 15,
-    y: 385 - 15,
+    x: 105 - 15,
+    y: 405 - 15,
     width: 30,
     height: 30,
     src: "images/liver.png",
@@ -37,8 +37,8 @@ var data = [
   },
   {
     name: "bone",
-    x: 160 - 15,
-    y: 410 - 15,
+    x: 110 - 15,
+    y: 440 - 15,
     width: 30,
     height: 30,
     src: "images/bone.png",

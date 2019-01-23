@@ -2,3 +2,41 @@ canvas {
   background-image: "images/escenario.png";
   border: 5px solid black;
 }
+#overlay {
+  background: black;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  color: white;
+  line-height: 100vh;
+  text-align: center;
+  font-size: 5em;
+}
+
+#tarjeta {
+  width: 50%;
+  height: 50%;
+  top: 100px;
+  left: 250px;
+  position: fixed;
+  color: black;
+  text-align: justify;
+  font-size: 2em;
+  border: 1px solid black;
+  background: grey;
+  display: none;
+}
+#pregunta {
+  text-align: center;
+  font-size: 30px;
+}
+
+#question {
+  text-align: center;
+  font-size: 20px;
+}
+.answer {
+  font-size: 16px;
+}

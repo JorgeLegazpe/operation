@@ -1,5 +1,5 @@
 window.onload = function() {
-  Game.start();
+  Game.start("canvas");
 };
 
 // var canvas = document.getElementById("canvas");

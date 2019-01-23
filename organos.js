@@ -1,11 +1,11 @@
 function Organo(game, name, x, y, src) {
-  (this.game = game),
-    (this.name = name),
-    (this.x = x),
-    (this.y = y),
-    (this.src = src),
-    (this.WIDTH = 30),
-    (this.HEIGHT = 30);
+  this.game = game;
+  this.name = name;
+  this.x = x;
+  this.y = y;
+  this.src = src;
+  this.WIDTH = 30;
+  this.HEIGHT = 30;
 }
 
 Organo.prototype.draw = function() {

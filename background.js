@@ -17,6 +17,9 @@ Background.prototype.draw = function() {
       this.WIDTH,
       this.HEIGHT
     );
+    this.game.organosArray.forEach(function(organo, i) {
+      organo.draw();
+    });
   }.bind(this);
   console.log(this.image.src);
   this.image.src = this.src;
