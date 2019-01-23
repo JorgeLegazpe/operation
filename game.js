@@ -187,29 +187,29 @@ var Game = {
         document.getElementById("tarjeta").style.display = "block";
         document.getElementById("labelAns3").innerHTML =
           questions[this.selection.name][numberQuestion].answers[2];
+
+        // Cuando el jugador pincha el botón de enviar respuesta:
+        // *Comprobar si la respuesta es correcta o no
+
+        // $("#respuestas input[name='answer']").c(function() {
+        //   debugger;
+        //   var valorestrella = $(this).val();
+        //   console.log(valorestrella);
+        // });
+
+        // $(document).ready(function() {
+        //   $("#enviar").click(function() {
+        //     alert($("input:radio[name=edad]:checked").val());
+        //   });
+        // });
+        // document.querySelector('#enviar')
       }
-    }
-
-    if (this.selection.name == question.name) {
-      var pregunta = brain[Math.floor(Math.random() * brain.length)];
-      console.log(pregunta);
-
-      console.log(question.name);
-      // if(selection.name === question.name){
-
-      // }
-
-      // var pregunta =
-      //   question[0][
-      //     Math.floor(Math.random() * question[selection.name].length)
-      //   ];
-      // console.log(question.length);
-      // console.log(Math.floor(Math.random() * 4));
-
-      console.log("Está en la nevera " + this.selection.name);
-      //console.log(questionBrain);
     } else {
-      console.log("no está en la nevera");
+      document.getElementById("caida").style.display = "block";
+
+      // Cuando pinchamos al botón:
+      // * Devolver el órgano a su posición original
+      // * Resetear una vida
     }
   }
 };

@@ -1,11 +1,11 @@
 function Background(game) {
-  (this.game = game),
-    (this.image = new Image()),
-    (this.src = "images/escenario.png"),
-    (this.x = 0),
-    (this.y = 0),
-    (this.WIDTH = 1200),
-    (this.HEIGHT = 600);
+  this.game = game;
+  this.image = new Image();
+  this.src = "images/escenario.png";
+  this.x = 0;
+  this.y = 0;
+  this.WIDTH = 1200;
+  this.HEIGHT = 600;
 }
 
 Background.prototype.draw = function() {
@@ -21,6 +21,6 @@ Background.prototype.draw = function() {
       organo.draw();
     });
   }.bind(this);
-  console.log(this.image.src);
+
   this.image.src = this.src;
 };

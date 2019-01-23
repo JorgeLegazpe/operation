@@ -10,32 +10,87 @@
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="organos.js"></script>
     <script type="text/javascript" src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css" />
 
     <title>Matadero</title>
   </head>
   <body>
-    <!-- <div id="overlay"><h1>MATADERO</h1><p>El bootcamp del cirujano</p></div> -->
-    <canvas id="canvas" width="1200px" height="600px"></canvas>
-    <div class="hola" id="tarjeta">
-      <h1 id="pregunta">Question</h1>
-      <hr color="black" />
-      <p id="question">BLa bla bla bla</p>
+    <!-- <div id="overlay">
+      <h1>MATADERO</h1>
+      <p>El bootcamp del cirujano</p>
+      <button onclick="location.href='#canvas'" class="boton"></button>Empezar a
+      jugar
+    </div> -->
 
-      <h2 id="opciones">Options</h2>
-      <div>
-        <input id="answer1" type="radio" name="answer" value="1" />
+    <!--LIENZO-->
+
+    <canvas id="canvas" width="1200px" height="600px"></canvas>
+
+    <!--Tarjeta de preguntas-->
+
+    <div id="tarjeta">
+      <h1 id="pregunta">Pregunta</h1>
+      <hr color="black" />
+      <p id="question"></p>
+
+      <h2 id="opciones">Opciones:</h2>
+      <div id="respuestas">
+        <input
+          id="answer1"
+          class="answer"
+          type="radio"
+          name="answer"
+          value="1"
+        />
         <label id="labelAns1"></label>
       </div>
       <div>
-        <input id="answer2" type="radio" name="answer" value="2" />
+        <input
+          id="answer2"
+          class="answer"
+          type="radio"
+          name="answer"
+          value="2"
+        />
         <label id="labelAns2"></label>
       </div>
       <div>
-        <input id="answer3" type="radio" name="answer" value="3" />
+        <input
+          id="answer3"
+          class="answer"
+          type="radio"
+          name="answer"
+          value="3"
+        />
         <label id="labelAns3"></label>
       </div>
-      <div><button id="enviar">Enviar respuesta</button></div>
+      <div><button class="enviar">Enviar respuesta</button></div>
+    </div>
+
+    <!--Respuesta correcta-->
+
+    <div id="correcta">
+      <h1>Respuesta correcta</h1>
+      <h2>
+        Has conseguido completar el trasplante del órgano, continua con la
+        operación
+      </h2>
+    </div>
+
+    <!--Respuesta incorrecta-->
+
+    <div id="incorrecta">
+      <h1>Respuesta incorrecta</h1>
+      <h2>La operación ha fracasado, pierdes una vida</h2>
+    </div>
+
+    <!--Órgano caido-->
+
+    <div id="caida">
+      <h1>¡¡¡ Has tirado el órgano al suelo !!!</h1>
+      <h2>Pierdes una vida</h2>
+      <button class="enviar">Vuelve a intentarlo</button>
     </div>
   </body>
 </html>
