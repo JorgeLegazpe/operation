@@ -1,9 +1,9 @@
-function Organo(game, name, y, src) {
+function Organo(game, name, x, y, src) {
   (this.game = game),
     (this.name = name),
+    (this.x = x),
     (this.y = y),
     (this.src = src),
-    (this.x = 200),
     (this.WIDTH = 30),
     (this.HEIGHT = 30);
 }

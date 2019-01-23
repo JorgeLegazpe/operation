@@ -17,9 +17,9 @@ var Game = {
       x: 800,
       y: 400,
       width: 200,
-      height: 200,
-      fillStyle: "#000"
+      height: 200
     };
+    this.selection = {};
 
     this.inilicializar();
     this.drawAll();
@@ -36,7 +36,7 @@ var Game = {
     data.forEach(
       function(organo) {
         this.organosArray.push(
-          new Organo(this, organo.name, organo.y, organo.src)
+          new Organo(this, organo.name, organo.x, organo.y, organo.src)
         );
       }.bind(this)
     );
@@ -100,9 +100,11 @@ var Game = {
         // Si es así, se establece dragok y isDragging en true
         this.dragok = true;
         r.isDragging = true;
+        this.selection = r;
       }
     }
     // Guardamos la posición actual
+    console.log(this.selection);
     this.startX = mx;
     this.startY = my;
   },
@@ -123,7 +125,9 @@ var Game = {
     for (var i = 0; i < this.organosArray.length; i++) {
       this.organosArray[i].isDragging = false;
     }
-    this.check();
+    console.log(e);
+    this.check(this.selection);
+    console.log(this.selection);
   },
   // manejar eventos cuando movemos el ratón
 
@@ -166,15 +170,16 @@ var Game = {
       this.startY = my;
     }
   },
-  check: function() {
+  check: function(arg) {
     console.log(this.currentValueX + " LLEGA " + this.fridge.x);
+    console.log(this.selection.name);
     if (
       this.currentValueX > this.fridge.x &&
       this.currentValueX + 30 < this.fridge.x + this.fridge.width &&
       this.currentValueY > this.fridge.y &&
       this.currentValueY + 30 < this.fridge.y + this.fridge.height
     ) {
-      console.log("Está en la nevera");
+      console.log("Está en la nevera " + this.selection.name);
     } else {
       console.log("no está en la nevera");
     }
