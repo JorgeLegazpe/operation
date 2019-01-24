@@ -9,10 +9,8 @@ function Organo(game, name, x, y, src) {
 }
 
 Organo.prototype.draw = function() {
-  // console.log(this.src);
   var image = new Image();
   image.onload = function() {
-    // console.log(this.game);
     this.game.ctx.drawImage(image, this.x, this.y, this.WIDTH, this.HEIGHT);
   }.bind(this);
   image.src = this.src;

@@ -109,6 +109,20 @@ canvas {
   display: none;
   border-radius: 30px;
 }
+#gameOver {
+  width: 50%;
+  height: 60%;
+  top: 100px;
+  left: 250px;
+  position: fixed;
+  color: rgb(7, 7, 7);
+  text-align: justify;
+  font-size: 20px;
+  border: 1px solid black;
+  background: #d4ecfa;
+  display: none;
+  border-radius: 30px;
+}
 #pregunta {
   text-align: center;
   font-size: 30px;

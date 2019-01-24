@@ -101,7 +101,6 @@ var Game = {
   // manejar eventos cuando clicamos el ratón
 
   myDown: function(e) {
-    console.log("boton del raton");
     // Le indicamos al navegador que estamos manejando eventos del ratón
     e.preventDefault();
     e.stopPropagation();
@@ -138,8 +137,6 @@ var Game = {
 
     this.currentValueX = e.screenX;
     this.currentValueY = e.screenY;
-
-    console.log(this.currentValueX, this.currentValueY);
 
     e.stopPropagation();
 
@@ -240,13 +237,21 @@ var Game = {
       this.removeLives();
     }
   },
+  addLives: function() {
+    $("#lives :i");
+  },
   removeLives: function() {
+    var that = this;
     if (this.credits > 1) {
       this.credits--;
       $("#lives :last-child").remove();
     } else {
       $("#lives :last-child").remove();
-      console.log("GAME OVER");
+      document.getElementById("gameOver").style.display = "block";
+      document.getElementById("final").addEventListener("click", function() {
+        document.getElementById("gameOver").style.display = "none";
+        location.reload();
+      });
     }
   },
 
