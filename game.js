@@ -22,6 +22,29 @@ var Game = {
     this.selection = {};
     this.respuesta;
     this.numberQuestion;
+    this.credits = 5;
+    this.positionFinal = {
+      brain: {
+        x: 1100,
+        y: 450
+      },
+      heart: {
+        x: 1070,
+        y: 510
+      },
+      lungs: {
+        x: 1030,
+        y: 490
+      },
+      liver: {
+        x: 1020,
+        y: 520
+      },
+      bone: {
+        x: 950,
+        y: 560
+      }
+    };
 
     this.inilicializar();
     this.drawAll();
@@ -113,6 +136,8 @@ var Game = {
 
     this.currentValueX = e.screenX;
     this.currentValueY = e.screenY;
+
+    console.log(this.currentValueX, this.currentValueY);
 
     e.stopPropagation();
 
@@ -206,6 +231,15 @@ var Game = {
         $("input:radio[name=answer]")[1].checked = false;
         $("input:radio[name=answer]")[2].checked = false;
       });
+      this.removeLives();
+    }
+  },
+  removeLives: function() {
+    if (this.credits > 1) {
+      this.credits--;
+      $("#lives :last-child").remove();
+    } else {
+      console.log("GAME OVER");
     }
   },
 
@@ -229,20 +263,11 @@ var Game = {
         document.getElementById("tarjeta").style.display = "block";
         document.getElementById("labelAns3").innerHTML =
           questions[this.selection.name][this.numberQuestion].answers[2];
-
-        // Cuando el jugador pincha el botón de enviar respuesta:
-        // *Comprobar si la respuesta es correcta o no
-        var that = this;
-        $(document).ready(function() {
-          $("#boton").click(function() {
-            respuesta = $("input:radio[name=answer]:checked").val();
-            that.comprobacion(respuesta);
-          });
-        });
       }
     } else {
       document.getElementById("caida").style.display = "block";
       var that = this;
+      this.removeLives();
       document
         .getElementById("caidaOrgano")
         .addEventListener("click", function() {
@@ -256,10 +281,6 @@ var Game = {
           }
           document.getElementById("caida").style.display = "none";
         });
-
-      // Cuando pinchamos al botón:
-      // * Devolver el órgano a su posición original
-      // * Resetear una vida
     }
   }
 };

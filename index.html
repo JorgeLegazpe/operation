@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script type="text/javascript" src="background.js"></script>
     <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="lives.js"></script>
     <script type="text/javascript" src="questions.js"></script>
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="organos.js"></script>
@@ -24,9 +25,9 @@
     </div> -->
 
     <!--LIENZO-->
-
-    <canvas id="canvas" width="1200px" height="600px"></canvas>
-
+    <div class="canvasDiv">
+      <canvas id="canvas" width="1200px" height="600px"></canvas>
+    </div>
     <!--Tarjeta de preguntas-->
 
     <div id="tarjeta">
@@ -96,6 +97,19 @@
       <h1>¡¡¡ Has tirado el órgano al suelo !!!</h1>
       <h2>Pierdes una vida</h2>
       <button id="caidaOrgano" class="enviar">Vuelve a intentarlo</button>
+    </div>
+
+    <div class="marcador">
+      <div><h1 class="title">VIDAS RESTANTES:</h1></div>
+      <div id="lives">
+        <img class="live" src="images/8061.jpg" alt="" />
+        <img class="live" src="images/8061.jpg" alt="" />
+        <img class="live" src="images/8061.jpg" alt="" />
+        <img class="live" src="images/8061.jpg" alt="" />
+        <img class="live" src="images/8061.jpg" alt="" />
+      </div>
+      <div class="score"><h1>PUNTUACIÓN:</h1></div>
+      <div>SCORE</div>
     </div>
   </body>
 </html>
