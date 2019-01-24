@@ -65,7 +65,10 @@
         />
         <label id="labelAns3"></label>
       </div>
-      <div><button class="enviar">Enviar respuesta</button></div>
+      <div>
+        <input id="boton" class="enviar" type="button" value="Enviar" />
+      </div>
+      <!-- <div><button class="enviar">Enviar respuesta</button></div> -->
     </div>
 
     <!--Respuesta correcta-->
@@ -76,6 +79,7 @@
         Has conseguido completar el trasplante del órgano, continua con la
         operación
       </h2>
+      <button id="sigueJugando" class="enviar">Sigue jugando</button>
     </div>
 
     <!--Respuesta incorrecta-->
@@ -83,6 +87,7 @@
     <div id="incorrecta">
       <h1>Respuesta incorrecta</h1>
       <h2>La operación ha fracasado, pierdes una vida</h2>
+      <button id="vuelve" class="enviar">Vuelve a intentarlo</button>
     </div>
 
     <!--Órgano caido-->
@@ -90,7 +95,7 @@
     <div id="caida">
       <h1>¡¡¡ Has tirado el órgano al suelo !!!</h1>
       <h2>Pierdes una vida</h2>
-      <button class="enviar">Vuelve a intentarlo</button>
+      <button id="caidaOrgano" class="enviar">Vuelve a intentarlo</button>
     </div>
   </body>
 </html>

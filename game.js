@@ -20,6 +20,8 @@ var Game = {
       height: 200
     };
     this.selection = {};
+    this.respuesta;
+    this.numberQuestion;
 
     this.inilicializar();
     this.drawAll();
@@ -48,8 +50,6 @@ var Game = {
   },
 
   addListener: function() {
-    console.log("entra");
-
     this.canvas.addEventListener(
       "mousedown",
       function(e) {
@@ -84,7 +84,6 @@ var Game = {
     // Obtenemos la posición actual del ratón
     var mx = parseInt(e.clientX - this.offsetX);
     var my = parseInt(e.clientY - this.offsetY);
-    console.log("pincho en " + "x: " + mx + " y: " + my);
 
     // Probamos cada objeto para ver si el ratón está dentro
 
@@ -167,6 +166,49 @@ var Game = {
       this.startY = my;
     }
   },
+  comprobacion: function(respuesta) {
+    var correctAnswer =
+      questions[this.selection.name][this.numberQuestion].correcta;
+    if (respuesta == correctAnswer) {
+      document.getElementById("tarjeta").style.display = "none";
+      document.getElementById("correcta").style.display = "block";
+      var that = this;
+      document
+        .getElementById("sigueJugando")
+        .addEventListener("click", function() {
+          for (var i = 0; i < that.organosArray.length; i++) {
+            if (that.selection.name === that.organosArray[i].name) {
+              var currentOrgano = that.organosArray[i];
+              currentOrgano.x = that.selection.x;
+              currentOrgano.y = that.selection.y;
+            }
+          }
+          document.getElementById("correcta").style.display = "none";
+          $("input:radio[name=answer]")[0].checked = false;
+          $("input:radio[name=answer]")[1].checked = false;
+          $("input:radio[name=answer]")[2].checked = false;
+        });
+    } else {
+      document.getElementById("tarjeta").style.display = "none";
+      document.getElementById("incorrecta").style.display = "block";
+      var that = this;
+      document.getElementById("vuelve").addEventListener("click", function() {
+        for (var i = 0; i < that.organosArray.length; i++) {
+          if (that.selection.name === that.organosArray[i].name) {
+            var currentOrgano = that.organosArray[i];
+            currentOrgano.x = data[i].x;
+            currentOrgano.y = data[i].y;
+            that.drawAll();
+          }
+        }
+        document.getElementById("incorrecta").style.display = "none";
+        $("input:radio[name=answer]")[0].checked = false;
+        $("input:radio[name=answer]")[1].checked = false;
+        $("input:radio[name=answer]")[2].checked = false;
+      });
+    }
+  },
+
   check: function() {
     if (
       this.currentValueX > this.camilla.x &&
@@ -175,37 +217,45 @@ var Game = {
       this.currentValueY + 30 < this.camilla.y + this.camilla.height
     ) {
       if (questions[this.selection.name]) {
-        var numberQuestion = Math.floor(Math.random() * 3);
+        this.numberQuestion = Math.floor(Math.random() * 3);
 
         document.getElementById("question").innerHTML =
-          questions[this.selection.name][numberQuestion].question;
+          questions[this.selection.name][this.numberQuestion].question;
 
         document.getElementById("labelAns1").innerHTML =
-          questions[this.selection.name][numberQuestion].answers[0];
+          questions[this.selection.name][this.numberQuestion].answers[0];
         document.getElementById("labelAns2").innerHTML =
-          questions[this.selection.name][numberQuestion].answers[1];
+          questions[this.selection.name][this.numberQuestion].answers[1];
         document.getElementById("tarjeta").style.display = "block";
         document.getElementById("labelAns3").innerHTML =
-          questions[this.selection.name][numberQuestion].answers[2];
+          questions[this.selection.name][this.numberQuestion].answers[2];
 
         // Cuando el jugador pincha el botón de enviar respuesta:
         // *Comprobar si la respuesta es correcta o no
-
-        // $("#respuestas input[name='answer']").c(function() {
-        //   debugger;
-        //   var valorestrella = $(this).val();
-        //   console.log(valorestrella);
-        // });
-
-        // $(document).ready(function() {
-        //   $("#enviar").click(function() {
-        //     alert($("input:radio[name=edad]:checked").val());
-        //   });
-        // });
-        // document.querySelector('#enviar')
+        var that = this;
+        $(document).ready(function() {
+          $("#boton").click(function() {
+            respuesta = $("input:radio[name=answer]:checked").val();
+            that.comprobacion(respuesta);
+          });
+        });
       }
     } else {
       document.getElementById("caida").style.display = "block";
+      var that = this;
+      document
+        .getElementById("caidaOrgano")
+        .addEventListener("click", function() {
+          for (var i = 0; i < that.organosArray.length; i++) {
+            if (that.selection.name === that.organosArray[i].name) {
+              var currentOrgano = that.organosArray[i];
+              currentOrgano.x = data[i].x;
+              currentOrgano.y = data[i].y;
+              that.drawAll();
+            }
+          }
+          document.getElementById("caida").style.display = "none";
+        });
 
       // Cuando pinchamos al botón:
       // * Devolver el órgano a su posición original
