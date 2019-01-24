@@ -28,54 +28,59 @@
       <canvas id="canvas" width="1200px" height="600px"></canvas>
     </div>
     <!--Tarjeta de preguntas-->
+    <div id="containertarjeta">
+      <div id="tarjeta">
+        <h1 id="pregunta">Pregunta</h1>
+        <hr color="black" />
+        <p id="question"></p>
 
-    <div id="tarjeta">
-      <h1 id="pregunta">Pregunta</h1>
-      <hr color="black" />
-      <p id="question"></p>
-
-      <h2 id="opciones">Opciones:</h2>
-      <div id="respuestas">
-        <input
-          id="answer1"
-          class="answer"
-          type="radio"
-          name="answer"
-          value="1"
-        />
-        <label id="labelAns1"></label>
+        <h2 id="opciones">Opciones:</h2>
+        <div id="respuestas">
+          <input
+            id="answer1"
+            class="answer"
+            type="radio"
+            name="answer"
+            value="1"
+          />
+          <label id="labelAns1"></label>
+        </div>
+        <div>
+          <input
+            id="answer2"
+            class="answer"
+            type="radio"
+            name="answer"
+            value="2"
+          />
+          <label id="labelAns2"></label>
+        </div>
+        <div>
+          <input
+            id="answer3"
+            class="answer"
+            type="radio"
+            name="answer"
+            value="3"
+          />
+          <label id="labelAns3"></label>
+        </div>
+        <div>
+          <input
+            id="boton"
+            class="enviar"
+            type="button"
+            value="Enviar respuesta"
+          />
+        </div>
       </div>
-      <div>
-        <input
-          id="answer2"
-          class="answer"
-          type="radio"
-          name="answer"
-          value="2"
-        />
-        <label id="labelAns2"></label>
-      </div>
-      <div>
-        <input
-          id="answer3"
-          class="answer"
-          type="radio"
-          name="answer"
-          value="3"
-        />
-        <label id="labelAns3"></label>
-      </div>
-      <div>
-        <input id="boton" class="enviar" type="button" value="Enviar" />
-      </div>
-      <!-- <div><button class="enviar">Enviar respuesta</button></div> -->
     </div>
-
     <!--Respuesta correcta-->
 
     <div id="correcta">
-      <h1>Respuesta correcta</h1>
-      <h2>
+      <h1 class="respuestaCorrecta">Respuesta correcta</h1>
+      <hr color="black" />
+      <h2 class="respuestaCorrecta2">
         Has conseguido completar el trasplante del órgano, continua con la
         operación
       </h2>
@@ -85,16 +90,20 @@
     <!--Respuesta incorrecta-->
 
     <div id="incorrecta">
-      <h1>Respuesta incorrecta</h1>
-      <h2>La operación ha fracasado, pierdes una vida</h2>
+      <h1 class="respuestaIncorrecta">Respuesta incorrecta</h1>
+      <hr color="black" />
+      <h2 class="respuestaCorrecta2">
+        La operación ha fracasado, pierdes una vida
+      </h2>
       <button id="vuelve" class="enviar">Vuelve a intentarlo</button>
     </div>
 
     <!--Órgano caido-->
 
     <div id="caida">
-      <h1>¡¡¡ Has tirado el órgano al suelo !!!</h1>
-      <h2>Pierdes una vida</h2>
+      <h1 class="respuestaIncorrecta">¡¡¡ Has tirado el órgano al suelo !!!</h1>
+      <hr color="black" />
+      <h2 class="respuestaCorrecta2">Ten más cuidado.<br />Pierdes una vida</h2>
       <button id="caidaOrgano" class="enviar">Vuelve a intentarlo</button>
     </div>
 
@@ -107,8 +116,8 @@
         <img class="live" src="images/8061.jpg" alt="" />
         <img class="live" src="images/8061.jpg" alt="" />
       </div>
-      <div class="score"><h1>PUNTUACIÓN:</h1></div>
-      <div id="puntuación"></div>
+      <div><h1>PUNTUACIÓN:</h1></div>
+      <div class="puntos" id="puntuación"></div>
     </div>
   </body>
 </html>

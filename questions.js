@@ -86,7 +86,7 @@ var questions = {
       answers: [
         "Sí, como todos los órganos de nuestro cuerpo",
         "Sí, es el único que tiene capaz de regenerarse",
-        "RNo, el hígado no puede regenerarse"
+        "No, el hígado no puede regenerarse"
       ]
     },
     {

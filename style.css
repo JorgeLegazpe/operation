@@ -1,7 +1,21 @@
 canvas {
+  display: flex;
+  justify-content: center;
   background-image: "images/escenario.png";
   border: 5px solid black;
   border-radius: 20px;
+}
+/* #containertarjeta {
+  position: absolute;
+  background-color: grey;
+  opacity: 0.2;
+  height: 600px;
+  width: 1200px;
+  top: 10px;
+} */
+
+.puntos {
+  font-size: 56px;
 }
 .marcador {
   border: 1px solid black;
@@ -44,9 +58,54 @@ canvas {
   position: fixed;
   color: black;
   text-align: justify;
-  font-size: 2em;
+  font-size: 20px;
   border: 1px solid black;
   background: white;
+  display: none;
+  border-radius: 30px;
+}
+
+#correcta {
+  width: 50%;
+  height: 60%;
+  top: 100px;
+  left: 250px;
+  position: fixed;
+  color: black;
+  text-align: justify;
+  font-size: 20px;
+  border: 1px solid black;
+  background: #d4ecfa;
+  display: none;
+  border-radius: 30px;
+}
+
+#incorrecta {
+  width: 50%;
+  height: 60%;
+  top: 100px;
+  left: 250px;
+  position: fixed;
+  color: red;
+  text-align: justify;
+  font-size: 20px;
+  border: 1px solid black;
+  background: #d4ecfa;
+  display: none;
+  border-radius: 30px;
+}
+
+#caida {
+  width: 50%;
+  height: 60%;
+  top: 100px;
+  left: 250px;
+  position: fixed;
+  color: red;
+  text-align: justify;
+  font-size: 20px;
+  border: 1px solid black;
+  background: #d4ecfa;
   display: none;
   border-radius: 30px;
 }
@@ -55,6 +114,21 @@ canvas {
   font-size: 30px;
   background-color: #3dcf26;
   color: black;
+}
+.respuestaCorrecta {
+  text-align: center;
+  font-size: 36px;
+  color: #3dcf26;
+}
+.respuestaCorrecta2 {
+  text-align: center;
+  font-size: 34px;
+  color: black;
+}
+.respuestaIncorrecta {
+  text-align: center;
+  font-size: 36px;
+  color: red;
 }
 
 #question {
@@ -76,53 +150,8 @@ canvas {
   background: black;
   color: white;
   padding: 20px;
-  margin: 20px 200px;
-  font-size: 14px;
-  border-radius: 30px;
-}
-
-#correcta {
-  width: 40%;
-  height: 40%;
-  top: 100px;
-  left: 250px;
-  position: fixed;
-  color: #29a407;
-  text-align: justify;
-  font-size: 2em;
-  border: 1px solid black;
-  background: white;
-  display: none;
-  border-radius: 30px;
-}
-
-#incorrecta {
-  width: 40%;
-  height: 40%;
-  top: 100px;
-  left: 250px;
-  position: fixed;
-  color: red;
-  text-align: justify;
-  font-size: 2em;
-  border: 1px solid black;
-  background: white;
-  display: none;
-  border-radius: 30px;
-}
-
-#caida {
-  width: 40%;
-  height: 40%;
-  top: 150px;
-  left: 250px;
-  position: fixed;
-  color: red;
-  text-align: center;
-  font-size: 18px;
-  border: 1px solid black;
-  background: white;
-  display: none;
+  margin: 40px 100px 20px 280px;
+  font-size: 16px;
   border-radius: 30px;
 }
 
