@@ -23,6 +23,8 @@ var Game = {
     this.respuesta;
     this.numberQuestion;
     this.credits = 5;
+    this.score = 0;
+    this.mySong = new Audio("audios/caida.mp3");
     this.positionFinal = {
       brain: {
         x: 1100,
@@ -198,6 +200,9 @@ var Game = {
       document.getElementById("tarjeta").style.display = "none";
       document.getElementById("correcta").style.display = "block";
       var that = this;
+      this.score += 100;
+      console.log(this.score);
+      document.getElementById("puntuacion").innerHTML = "this.score";
       document
         .getElementById("sigueJugando")
         .addEventListener("click", function() {
@@ -239,6 +244,7 @@ var Game = {
       this.credits--;
       $("#lives :last-child").remove();
     } else {
+      $("#lives :last-child").remove();
       console.log("GAME OVER");
     }
   },
@@ -268,6 +274,7 @@ var Game = {
       document.getElementById("caida").style.display = "block";
       var that = this;
       this.removeLives();
+      this.mySong.play();
       document
         .getElementById("caidaOrgano")
         .addEventListener("click", function() {
