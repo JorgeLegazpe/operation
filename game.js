@@ -29,28 +29,33 @@ var Game = {
     this.mySong2 = new Audio("Audios/winner.mp3");
     this.mySong3 = new Audio("Audios/Error.mp3");
     this.mySong4 = new Audio("Audios/gameover.mp3");
-    this.positionFinal = {
-      brain: {
-        x: 1100,
-        y: 450
+    this.positionFinal = [
+      {
+        name: "brain",
+        x: 1090,
+        y: 290
       },
-      heart: {
-        x: 1070,
-        y: 510
+      {
+        name: "heart",
+        x: 1050,
+        y: 340
       },
-      lungs: {
-        x: 1030,
-        y: 490
+      {
+        name: "lungs",
+        x: 1015,
+        y: 330
       },
-      liver: {
-        x: 1020,
-        y: 520
+      {
+        name: "liver",
+        x: 1000,
+        y: 355
       },
-      bone: {
+      {
+        name: "bone",
         x: 950,
-        y: 560
+        y: 400
       }
-    };
+    ];
 
     this.inilicializar();
     this.drawAll();
@@ -210,8 +215,9 @@ var Game = {
           for (var i = 0; i < that.organosArray.length; i++) {
             if (that.selection.name === that.organosArray[i].name) {
               var currentOrgano = that.organosArray[i];
-              currentOrgano.x = that.selection.x;
-              currentOrgano.y = that.selection.y;
+              currentOrgano.x = that.positionFinal[i].x;
+              currentOrgano.y = that.positionFinal[i].y;
+              that.drawAll();
             }
           }
           document.getElementById("correcta").style.display = "none";
