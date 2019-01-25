@@ -13,6 +13,7 @@ var Game = {
     this.startY;
     this.currentValueX = 0;
     this.currentValueY = 0;
+    this.victory = 0;
     this.camilla = {
       x: 950,
       y: 420,
@@ -29,6 +30,7 @@ var Game = {
     this.mySong2 = new Audio("Audios/winner.mp3");
     this.mySong3 = new Audio("Audios/Error.mp3");
     this.mySong4 = new Audio("Audios/gameover.mp3");
+    this.mySong5 = new Audio("Audios/victoria.mp3");
     this.positionFinal = [
       {
         name: "brain",
@@ -204,30 +206,47 @@ var Game = {
       questions[this.selection.name][this.numberQuestion].correcta;
     if (respuesta == correctAnswer) {
       this.mySong2.play();
-      document.getElementById("tarjeta").style.display = "none";
-      document.getElementById("correcta").style.display = "block";
-      var that = this;
+      this.victory++;
+      console.log(this.victory);
       this.score += 100;
       document.getElementById("puntuación").innerHTML = this.score;
-      document
-        .getElementById("sigueJugando")
-        .addEventListener("click", function() {
-          for (var i = 0; i < that.organosArray.length; i++) {
-            if (that.selection.name === that.organosArray[i].name) {
-              var currentOrgano = that.organosArray[i];
-              currentOrgano.x = that.positionFinal[i].x;
-              currentOrgano.y = that.positionFinal[i].y;
-              that.drawAll();
-            }
-          }
-          document.getElementById("correcta").style.display = "none";
-          $("input:radio[name=answer]")[0].checked = false;
-          $("input:radio[name=answer]")[1].checked = false;
-          $("input:radio[name=answer]")[2].checked = false;
+      document.getElementById("containertarjeta").style.display = "none";
+
+      var that = this;
+
+      if (this.victory === 5) {
+        that.mySong5.play();
+        document.getElementById("containertarjeta6").style.display = "block";
+        document.getElementById("victoria").style.display = "block";
+        document.getElementById("final2").addEventListener("click", function() {
+          document.getElementById("victoria").style.display = "none";
+          location.reload();
         });
+      } else {
+        document.getElementById("containertarjeta5").style.display = "block";
+        document.getElementById("correcta").style.display = "block";
+        document
+          .getElementById("sigueJugando")
+          .addEventListener("click", function() {
+            for (var i = 0; i < that.organosArray.length; i++) {
+              if (that.selection.name === that.organosArray[i].name) {
+                var currentOrgano = that.organosArray[i];
+                currentOrgano.x = that.positionFinal[i].x;
+                currentOrgano.y = that.positionFinal[i].y;
+                that.drawAll();
+              }
+            }
+            document.getElementById("correcta").style.display = "none";
+            document.getElementById("containertarjeta5").style.display = "none";
+            $("input:radio[name=answer]")[0].checked = false;
+            $("input:radio[name=answer]")[1].checked = false;
+            $("input:radio[name=answer]")[2].checked = false;
+          });
+      }
     } else {
       this.mySong3.play();
-      document.getElementById("tarjeta").style.display = "none";
+      document.getElementById("containertarjeta").style.display = "none";
+      document.getElementById("containertarjeta4").style.display = "block";
       document.getElementById("incorrecta").style.display = "block";
       this.score -= 50;
       document.getElementById("puntuación").innerHTML = this.score;
@@ -241,6 +260,7 @@ var Game = {
             that.drawAll();
           }
         }
+        document.getElementById("containertarjeta4").style.display = "none";
         document.getElementById("incorrecta").style.display = "none";
         $("input:radio[name=answer]")[0].checked = false;
         $("input:radio[name=answer]")[1].checked = false;
@@ -261,6 +281,7 @@ var Game = {
       $("#lives :last-child").remove();
       this.mySong4.play();
       document.getElementById("gameOver").style.display = "block";
+      document.getElementById("containertarjeta3").style.display = "block";
       document.getElementById("final").addEventListener("click", function() {
         document.getElementById("gameOver").style.display = "none";
         location.reload();
@@ -285,7 +306,7 @@ var Game = {
           questions[this.selection.name][this.numberQuestion].answers[0];
         document.getElementById("labelAns2").innerHTML =
           questions[this.selection.name][this.numberQuestion].answers[1];
-        document.getElementById("tarjeta").style.display = "block";
+        document.getElementById("containertarjeta").style.display = "block";
         document.getElementById("labelAns3").innerHTML =
           questions[this.selection.name][this.numberQuestion].answers[2];
       }
@@ -296,6 +317,7 @@ var Game = {
       this.mySong.play();
       this.score -= 25;
       document.getElementById("puntuación").innerHTML = this.score;
+      document.getElementById("containertarjeta2").style.display = "block";
       document
         .getElementById("caidaOrgano")
         .addEventListener("click", function() {
@@ -307,6 +329,7 @@ var Game = {
               that.drawAll();
             }
           }
+          document.getElementById("containertarjeta2").style.display = "none";
           document.getElementById("caida").style.display = "none";
         });
     }

@@ -75,57 +75,78 @@
       </div>
     </div>
     <!--Respuesta correcta-->
-
-    <div id="correcta">
-      <h1 class="respuestaCorrecta">Respuesta correcta</h1>
-      <hr color="black" />
-      <h2 class="respuestaCorrecta2">
-        Has conseguido completar el trasplante del órgano, continua con la
-        operación
-      </h2>
-      <button id="sigueJugando" class="enviar">Sigue jugando</button>
+    <div id="containertarjeta5">
+      <div id="correcta">
+        <h1 class="respuestaCorrecta">Respuesta correcta</h1>
+        <hr color="black" />
+        <h2 class="respuestaCorrecta2">
+          Has conseguido completar el trasplante del órgano, continua con la
+          operación
+        </h2>
+        <button id="sigueJugando" class="enviar">Sigue jugando</button>
+      </div>
     </div>
 
     <!--Respuesta incorrecta-->
-
-    <div id="incorrecta">
-      <h1 class="respuestaIncorrecta">Respuesta incorrecta</h1>
-      <hr color="black" />
-      <h2 class="respuestaCorrecta2">
-        La operación ha fracasado, pierdes una vida
-      </h2>
-      <button id="vuelve" class="enviar">Vuelve a intentarlo</button>
+    <div id="containertarjeta4">
+      <div id="incorrecta">
+        <h1 class="respuestaIncorrecta">Respuesta incorrecta</h1>
+        <hr color="black" />
+        <h2 class="respuestaCorrecta2">
+          La operación ha fracasado, pierdes una vida
+        </h2>
+        <button id="vuelve" class="enviar">Vuelve a intentarlo</button>
+      </div>
     </div>
 
     <!--Órgano caido-->
-
-    <div id="caida">
-      <h1 class="respuestaIncorrecta">¡¡¡ Has tirado el órgano al suelo !!!</h1>
-      <hr color="black" />
-      <h2 class="respuestaCorrecta2">Ten más cuidado.<br />Pierdes una vida</h2>
-      <button id="caidaOrgano" class="enviar">Vuelve a intentarlo</button>
+    <div id="containertarjeta2">
+      <div id="caida">
+        <h1 class="respuestaIncorrecta">
+          ¡¡¡ Has tirado el órgano al suelo !!!
+        </h1>
+        <hr color="black" />
+        <h2 class="respuestaCorrecta2">
+          Ten más cuidado.<br />Pierdes una vida
+        </h2>
+        <button id="caidaOrgano" class="enviar">Vuelve a intentarlo</button>
+      </div>
     </div>
 
     <!--Game Over-->
+    <div id="containertarjeta3">
+      <div id="gameOver">
+        <h1 class="respuestaIncorrecta">¡¡¡ Game Over !!!</h1>
+        <hr color="black" />
+        <h2 class="respuestaCorrecta2">Te has quedado sin vidas</h2>
+        <button id="final" class="enviar">Comienza de nuevo</button>
+      </div>
+    </div>
 
-    <div id="gameOver">
-      <h1 class="respuestaIncorrecta">¡¡¡ Game Over !!!</h1>
-      <hr color="black" />
-      <h2 class="respuestaCorrecta2">Te has quedado sin vidas</h2>
-      <button id="final" class="enviar">Comienza de nuevo</button>
+    <!--Victoria-->
+
+    <div id="containertarjeta6">
+      <div id="victoria">
+        <h1 class="respuestaIncorrecta">¡¡¡ Has ganado !!!</h1>
+        <hr color="black" />
+        <h2 class="respuestaCorrecta2">El enfermo vivirá otros 40 años</h2>
+        <button id="final2" class="enviar">Comienza de nuevo</button>
+      </div>
     </div>
 
     <div class="marcador">
-      <div><h1 class="title">VIDAS RESTANTES:</h1></div>
-      <div id="lives">
-        <img class="live" src="images/8061.jpg" alt="" />
-        <img class="live" src="images/8061.jpg" alt="" />
-        <img class="live" src="images/8061.jpg" alt="" />
-        <img class="live" src="images/8061.jpg" alt="" />
-        <img class="live" src="images/8061.jpg" alt="" />
+      <div class="marcont">
+        <div><h1 class="title">VIDAS RESTANTES:</h1></div>
+        <div id="lives">
+          <img class="live" src="images/8061.jpg" alt="" />
+          <img class="live" src="images/8061.jpg" alt="" />
+          <img class="live" src="images/8061.jpg" alt="" />
+          <img class="live" src="images/8061.jpg" alt="" />
+          <img class="live" src="images/8061.jpg" alt="" />
+        </div>
+        <div><h1>PUNTUACIÓN:</h1></div>
+        <div class="puntos" id="puntuación"></div>
       </div>
-      <div><h1>PUNTUACIÓN:</h1></div>
-      <div class="puntos" id="puntuación"></div>
     </div>
   </body>
 </html>
