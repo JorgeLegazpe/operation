@@ -24,6 +24,7 @@ var Game = {
     this.numberQuestion;
     this.credits = 5;
     this.score = 0;
+    document.getElementById("puntuación").innerHTML = this.score;
     this.mySong = new Audio("Audios/caida2.mp3");
     this.mySong2 = new Audio("Audios/winner.mp3");
     this.mySong3 = new Audio("Audios/Error.mp3");

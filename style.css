@@ -36,6 +36,7 @@ canvas {
   background: white;
   padding: 20px;
   font-size: 30px;
+  border-radius: 20px;
 }
 #overlay {
   background: black;
