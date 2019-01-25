@@ -35,17 +35,17 @@ canvas {
 .boton {
   background: white;
   padding: 20px;
-  font-size: 16 px;
+  font-size: 30px;
 }
 #overlay {
-  background-image: "";
+  background: black;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
   position: fixed;
   color: white;
-  line-height: 30vh;
+  line-height: 18vh;
   text-align: center;
   font-size: 5em;
 }

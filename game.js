@@ -24,7 +24,10 @@ var Game = {
     this.numberQuestion;
     this.credits = 5;
     this.score = 0;
-    this.mySong = new Audio("Audios/caida.mp3");
+    this.mySong = new Audio("Audios/caida2.mp3");
+    this.mySong2 = new Audio("Audios/winner.mp3");
+    this.mySong3 = new Audio("Audios/Error.mp3");
+    this.mySong4 = new Audio("Audios/gameover.mp3");
     this.positionFinal = {
       brain: {
         x: 1100,
@@ -194,6 +197,7 @@ var Game = {
     var correctAnswer =
       questions[this.selection.name][this.numberQuestion].correcta;
     if (respuesta == correctAnswer) {
+      this.mySong2.play();
       document.getElementById("tarjeta").style.display = "none";
       document.getElementById("correcta").style.display = "block";
       var that = this;
@@ -215,6 +219,7 @@ var Game = {
           $("input:radio[name=answer]")[2].checked = false;
         });
     } else {
+      this.mySong3.play();
       document.getElementById("tarjeta").style.display = "none";
       document.getElementById("incorrecta").style.display = "block";
       this.score -= 50;
@@ -247,6 +252,7 @@ var Game = {
       $("#lives :last-child").remove();
     } else {
       $("#lives :last-child").remove();
+      this.mySong4.play();
       document.getElementById("gameOver").style.display = "block";
       document.getElementById("final").addEventListener("click", function() {
         document.getElementById("gameOver").style.display = "none";
@@ -297,5 +303,10 @@ var Game = {
           document.getElementById("caida").style.display = "none";
         });
     }
+  },
+  reset: function() {
+    document.getElementById("reset").addEventListener("click", function() {
+      document.getElementById("reset").style.display = "none";
+    });
   }
 };
